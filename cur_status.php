@@ -8,6 +8,7 @@ function check404($url){
 	header("Pragma: no-cache");
 	$handle = curl_init($url);
 	curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($handle,CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 	curl_setopt($handle, CURLOPT_TIMEOUT,10); 
 	$response = curl_exec($handle);
 	$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
